@@ -1,0 +1,12 @@
+# Source originals kept locally; the site uses the copies under assets/
+CV - Siva Sai.pdf
+NUS_background.jfif
+Profile_pic_1.jpeg
+
+# OS cruft
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Local-only files, never published
+_local (not published)/

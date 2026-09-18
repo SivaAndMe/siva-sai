@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Siva Sai</title>
+<meta name="description" content="Siva Sai is a postdoctoral research fellow at the National University of Singapore working on distributed and quantum machine learning, privacy-preserving learning for healthcare, and blockchain-backed systems.">
+<meta name="author" content="Siva Sai">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Siva Sai">
+<meta property="og:description" content="Postdoctoral research fellow, National University of Singapore. Distributed and quantum machine learning, privacy-preserving learning, blockchain-backed systems.">
+<meta property="og:image" content="assets/img/siva-sai.jpg">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='3' fill='%2314524E'/><text x='16' y='23' font-family='Georgia,serif' font-size='18' fill='%23FAFAF8' text-anchor='middle'>S</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,450;6..72,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav">
+  <nav class="nav__inner" aria-label="Primary">
+    <a class="nav__brand" href="#top">Siva Sai</a>
+    <div class="nav__links">
+      <a href="#research">Research</a>
+      <a href="#about">About</a>
+      <a href="#positions">Positions</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ============================================================ hero -- -->
+  <section id="top" class="hero">
+    <div class="hero__band">
+      <img src="assets/img/nus-campus.jpg" alt="The National University of Singapore campus at dusk" width="990" height="247" fetchpriority="high">
+    </div>
+
+    <div class="wrap hero__body">
+      <div>
+        <div class="hero__portrait rise rise--1">
+          <img src="assets/img/siva-sai.jpg" alt="Portrait of Siva Sai" width="769" height="811">
+        </div>
+        <div class="hero__contact rise rise--2">
+          <button type="button" class="reveal-mail" data-mail>
+            <i class="ph ph-envelope-simple" aria-hidden="true"></i><span>Show email address</span>
+          </button>
+          <a href="https://scholar.google.com/citations?user=et-EvAcAAAAJ&hl=en"><i class="ph ph-graduation-cap" aria-hidden="true"></i>Google Scholar</a>
+        </div>
+      </div>
+
+      <div class="hero__text">
+        <h1 class="hero__name rise rise--2">Siva Sai</h1>
+        <p class="hero__role rise rise--3">
+          Postdoctoral Research Fellow
+          <span>National University of Singapore</span>
+        </p>
+        <p class="hero__lede rise rise--3">
+          I work on machine learning systems pulled apart across many parties, and on
+          what it takes to keep them accurate, private and trustworthy once they are.
+          Currently: distributed quantum machine learning.
+        </p>
+        <div class="hero__actions rise rise--4">
+          <a class="btn btn--solid" href="#publications">Publications</a>
+          <a class="btn btn--line" href="#research">Research</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= metrics -- -->
+  <section class="metrics" aria-label="Publication record at a glance">
+    <div class="wrap">
+      <div class="metrics__grid">
+        <div class="metrics__cell">
+          <div class="metrics__value">59</div>
+          <div class="metrics__label">Journal and conference papers</div>
+        </div>
+        <div class="metrics__cell">
+          <div class="metrics__value">2,795</div>
+          <div class="metrics__label">Citations</div>
+        </div>
+        <div class="metrics__cell">
+          <div class="metrics__value">25</div>
+          <div class="metrics__label">h-index</div>
+        </div>
+        <div class="metrics__cell">
+          <div class="metrics__value">39</div>
+          <div class="metrics__label">i10-index</div>
+        </div>
+      </div>
+      <p class="metrics__source">
+        Counts from <a href="https://scholar.google.com/citations?user=et-EvAcAAAAJ&hl=en">Google Scholar</a>,
+        including 37 papers in IEEE journals and magazines and 12 in Transactions.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================================================== research -- -->
+  <section id="research" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Research</h2>
+        <p class="section-note">
+          One question runs through all of it: when a learning system is split across
+          hospitals, vehicles, devices or quantum processors that cannot fully trust
+          each other, what breaks, and how do you fix it?
+        </p>
+      </div>
+
+      <div class="themes">
+        <article class="theme theme--lead">
+          <h3 class="theme__title">Quantum machine learning for distributed settings</h3>
+          <p class="theme__body">
+            My current work at NUS studies the adversarial robustness of quantum models
+            trained across separate parties, and quantum generative modelling. At Melbourne
+            I built APS-pQFL, a personalised quantum federated learning method that uses
+            soft masking and circuit-level sensitivity analysis to hold 75 to 82 percent
+            accuracy on highly skewed non-IID medical data, five to ten points above the
+            baselines it was measured against.
+          </p>
+        </article>
+
+        <article class="theme theme--wide">
+          <h3 class="theme__title">Privacy-preserving distributed learning</h3>
+          <p class="theme__body">
+            Split learning, federated learning and incremental learning for clinical data
+            that is not allowed to leave the institution holding it, with the client
+            selection, feature selection and lightweight-client problems that come with
+            Internet of Medical Things deployments.
+          </p>
+        </article>
+
+        <article class="theme theme--wide">
+          <h3 class="theme__title">Blockchain for accountable systems</h3>
+          <p class="theme__body">
+            Ledger-backed protocols for parties that have to cooperate without trusting one
+            another: e-prescription management, medical record sharing, anomaly detection
+            in connected-vehicle platoons, and traceability in physical supply chains.
+          </p>
+        </article>
+
+        <article class="theme">
+          <h3 class="theme__title">Generative AI, capability and risk</h3>
+          <p class="theme__body">
+            Taxonomies and evaluations of diffusion and language models across healthcare,
+            security and consumer systems, together with machine unlearning as a way to
+            take training data back out of a deployed model.
+          </p>
+        </article>
+
+        <article class="theme">
+          <h3 class="theme__title">Wireless sensing and applied ML</h3>
+          <p class="theme__body">
+            Wi-Fi channel state information for human activity recognition, fall detection
+            and hand hygiene monitoring, plus diffusion-guided augmentation for
+            vision-based accident detection in vehicular networks.
+          </p>
+        </article>
+
+        <article class="theme">
+          <h3 class="theme__title">Surveys that open a field</h3>
+          <p class="theme__body">
+            A recurring part of my output is the entry-point review: mapping a fast-moving
+            area into a structure a new researcher can actually start from. Several of these
+            are among my most-cited papers.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================== about -- -->
+  <section id="about" class="section section--tint">
+    <div class="wrap bio">
+      <div class="bio__prose">
+        <h2 class="section-title" style="margin-bottom:1.5rem">About</h2>
+        <p>
+          I am a postdoctoral research fellow at the National University of Singapore,
+          where I work on the adversarial robustness of distributed quantum machine
+          learning and on quantum generative modelling. I completed my PhD at BITS Pilani
+          in December 2025 under Prof. Vinay Chamola, on the confluence of blockchain and
+          AI technologies for next-generation healthcare solutions, and spent the closing
+          months of 2025 at the University of Melbourne as a visiting researcher with
+          Prof. Rajkumar Buyya, working on distributed quantum machine learning. Before
+          the PhD I read Computer Science and Economics at BITS Pilani, finishing with a
+          CGPA of 9.03 out of 10.
+        </p>
+        <p>
+          The through-line across my work is distribution and trust. I have built split
+          learning and federated learning frameworks for Internet of Medical Things
+          deployments, blockchain-backed protocols for prescription management and
+          connected-vehicle anomaly detection, and most recently APS-pQFL, a personalised
+          quantum federated learning method for heterogeneous healthcare networks.
+          Alongside the systems work I write survey and taxonomy papers that turn a
+          fast-moving area into something a newcomer can enter, which is also where much
+          of my citation record comes from. The work appears in IEEE Transactions on
+          Consumer Electronics, IEEE Transactions on Intelligent Transportation Systems,
+          IEEE Internet of Things Journal, ACM Transactions on Internet Technology, Future
+          Generation Computer Systems and Neural Networks, and has been cited roughly
+          2,800 times.
+        </p>
+      </div>
+
+      <aside class="aside-card">
+        <h3>Education</h3>
+        <ul>
+          <li>
+            <strong>PhD, Computer Science</strong>
+            BITS Pilani, 2022 to 2025. Confluence of blockchain and AI technologies for
+            next-generation healthcare solutions. Advised by Prof. Vinay Chamola.
+          </li>
+          <li>
+            <strong>BE Computer Science and MSc Economics</strong>
+            BITS Pilani, 2017 to 2022. CGPA 9.03 out of 10.
+          </li>
+          <li>
+            <strong>Languages and tools</strong>
+            C, C++, Python, SQL, PyTorch, scikit-learn.
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ======================================================= positions -- -->
+  <section id="positions" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Positions</h2>
+      </div>
+
+      <div class="timeline">
+        <article class="entry">
+          <div class="entry__when">Feb 2026 to present</div>
+          <div>
+            <h3 class="entry__role">Postdoctoral Research Fellow</h3>
+            <p class="entry__org">National University of Singapore</p>
+            <p class="entry__detail">
+              Adversarial robustness of distributed quantum machine learning, and quantum
+              generative modelling.
+            </p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="entry__when">Sep to Dec 2025</div>
+          <div>
+            <h3 class="entry__role">Visiting Researcher</h3>
+            <p class="entry__org">University of Melbourne</p>
+            <p class="entry__detail">
+              Distributed quantum machine learning with Prof. Rajkumar Buyya. Developed
+              APS-pQFL for privacy-preserving medical diagnostics across IoMT-enabled
+              institutions, co-authored a Morgan Kaufmann book chapter on quantum federated
+              learning, and contributed to work on quantum-integrated high-performance
+              computing.
+            </p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="entry__when">May 2023 to Jul 2024</div>
+          <div>
+            <h3 class="entry__role">Research Collaboration, Generative AI for the Metaverse</h3>
+            <p class="entry__org">Edinburgh Napier University, with Prof. Amir Hussain</p>
+            <p class="entry__detail">
+              Led an international team drafting and revising a comprehensive survey on
+              generative AI for immersive experience. Two journal papers.
+            </p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="entry__when">Dec 2022 to Jan 2023</div>
+          <div>
+            <h3 class="entry__role">Research Collaboration, Blockchain and AI for Healthcare</h3>
+            <p class="entry__org">National University of Singapore, with Prof. Biplab Sikdar</p>
+            <p class="entry__detail">
+              Led an international team on secure and scalable healthcare solutions, and on
+              consumer electronics technologies for the metaverse. Three papers in IEEE
+              journals and magazines.
+            </p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="entry__when">Jan to Jul 2021</div>
+          <div>
+            <h3 class="entry__role">Research Collaboration, Distributed Ledgers for Connected Vehicles</h3>
+            <p class="entry__org">University of Texas at San Antonio, with Prof. Heena Rathore</p>
+            <p class="entry__detail">
+              Implemented TangleCV, a distributed ledger framework for connected vehicles,
+              from scratch in Python and evaluated it on the SwRI dataset under parasite
+              chain attacks and sensor faults.
+            </p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="entry__when">May to Jun 2019</div>
+          <div>
+            <h3 class="entry__role">Summer Data Science Intern</h3>
+            <p class="entry__org">Couture.AI, Bangalore</p>
+            <p class="entry__detail">
+              Feature extraction and matching over a large apparel image database using
+              SIFT, SURF, BRIEF, histogram and LBP methods in OpenCV, with a Flask API for
+              a dress-object recognition model.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== publications -- -->
+  <section id="publications" class="section section--tint">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">Selected publications</h2>
+        <p class="section-note">
+          Eighteen papers that represent the range of the work. Filter by area, or see the
+          complete list on Google Scholar.
+        </p>
+      </div>
+
+      <div class="pub-toolbar" role="group" aria-label="Filter publications by research area">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All areas</button>
+        <button class="chip" type="button" data-filter="quantum" aria-pressed="false">Quantum</button>
+        <button class="chip" type="button" data-filter="distributed" aria-pressed="false">Distributed learning</button>
+        <button class="chip" type="button" data-filter="blockchain" aria-pressed="false">Blockchain</button>
+        <button class="chip" type="button" data-filter="genai" aria-pressed="false">Generative AI</button>
+        <button class="chip" type="button" data-filter="sensing" aria-pressed="false">Sensing and applied ML</button>
+      </div>
+
+      <div class="pubs" id="pubs">
+
+        <article class="pub" data-area="quantum">
+          <div class="pub__year">2026</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1016/j.future.2026.108602">Quantum artificial intelligence for mission-critical systems: foundations, architectural elements and future directions</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, R. Buyya</p>
+            <p class="pub__venue"><em>Future Generation Computer Systems</em>, vol. 184, art. 108602</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="quantum genai">
+          <div class="pub__year">2026</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1016/j.future.2026.108714">Generative AI in the age of quantum computing: a taxonomy, architectural elements and future directions</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, I. Goyal, V. Chamola, R. Buyya</p>
+            <p class="pub__venue"><em>Future Generation Computer Systems</em>, art. 108714</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="quantum distributed">
+          <div class="pub__year">2026</div>
+          <div>
+            <h3 class="pub__title">Quantum federated learning: architectural elements and future directions</h3>
+            <p class="pub__authors"><b>S. Sai</b>, A. Sawaika, P. Singh, R. Buyya</p>
+            <p class="pub__venue">Book chapter in <em>Federated Learning: Foundations and Applications</em>, Morgan Kaufmann, pp. 325 to 343</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="quantum">
+          <div class="pub__year">2026</div>
+          <div>
+            <h3 class="pub__title">Quantum machine learning for cybersecurity: a taxonomy and future directions</h3>
+            <p class="pub__authors"><b>S. Sai</b>, I. Goyal, S. Sharma, S. H. Manuri, V. Chamola, R. Buyya</p>
+            <p class="pub__venue"><em>Software: Practice and Experience</em></p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="distributed blockchain">
+          <div class="pub__year">2024</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/TCE.2024.3418963">A blockchain-enabled split learning framework with a novel client selection method for collaborative learning in smart healthcare</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, V. Chamola</p>
+            <p class="pub__venue"><em>IEEE Transactions on Consumer Electronics</em>, vol. 70, no. 3, pp. 5887 to 5894. Outstanding Research Article Award, EEE Department, BITS Pilani</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="distributed">
+          <div class="pub__year">2026</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/TCE.2026.3698595">Split learning-enabled framework for secure and lightweight Internet of Medical Things systems</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, M. Prasad, A. Bhargava, V. Chamola, R. Buyya</p>
+            <p class="pub__venue"><em>IEEE Transactions on Consumer Electronics</em></p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="distributed blockchain">
+          <div class="pub__year">2024</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/JIOT.2023.3308991">Federated learning and NFT-based privacy-preserving medical-data-sharing scheme for intelligent diagnosis in smart healthcare</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, V. Hassija, V. Chamola, M. Guizani</p>
+            <p class="pub__venue"><em>IEEE Internet of Things Journal</em>, vol. 11, no. 4, pp. 5568 to 5577</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="distributed">
+          <div class="pub__year">2024</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/TMLCN.2024.3374253">An IoMT-based incremental learning framework with a novel feature selection algorithm for intelligent diagnosis in smart healthcare</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, K. S. Bhandari, A. Nawal, V. Chamola, B. Sikdar</p>
+            <p class="pub__venue"><em>IEEE Transactions on Machine Learning in Communications and Networking</em>, vol. 2, pp. 370 to 383</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="blockchain">
+          <div class="pub__year">2023</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/JIOT.2022.3232793">Confluence of blockchain and artificial intelligence technologies for secure and scalable healthcare solutions: a review</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, V. Chamola, K.-K. R. Choo, B. Sikdar, J. J. P. C. Rodrigues</p>
+            <p class="pub__venue"><em>IEEE Internet of Things Journal</em>, vol. 10, no. 7, pp. 5873 to 5897</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="blockchain">
+          <div class="pub__year">2024</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1145/3641279">AI-assisted blockchain-enabled smart and secure e-prescription management framework</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, V. Chamola</p>
+            <p class="pub__venue"><em>ACM Transactions on Internet Technology</em></p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="blockchain sensing">
+          <div class="pub__year">2023</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/TITS.2023.3262398">Social psychology inspired distributed ledger technique for anomaly detection in connected vehicles</a></h3>
+            <p class="pub__authors">H. Rathore, <b>S. Sai</b>, A. Gundewar</p>
+            <p class="pub__venue"><em>IEEE Transactions on Intelligent Transportation Systems</em>, vol. 24, no. 7, pp. 7092 to 7107</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="genai">
+          <div class="pub__year">2024</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1007/s12559-023-10219-3">Machine unlearning: an overview of techniques, applications and future directions</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, U. Mittal, V. Chamola, K. Huang, I. Spinelli, S. Scardapane, Z. Tan, A. Hussain</p>
+            <p class="pub__venue"><em>Cognitive Computation</em>, vol. 16, no. 2, pp. 482 to 506</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="genai">
+          <div class="pub__year">2024</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/ACCESS.2024.3367715">Generative AI for transformative healthcare: a comprehensive study of emerging models, applications, case studies and limitations</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, A. Gaur, R. Sai, V. Chamola, M. Guizani, J. J. P. C. Rodrigues</p>
+            <p class="pub__venue"><em>IEEE Access</em>, vol. 12, pp. 31078 to 31106</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="genai">
+          <div class="pub__year">2024</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1007/s12559-024-10342-9">A comprehensive survey on generative AI for metaverse: enabling immersive experience</a></h3>
+            <p class="pub__authors">V. Chamola, <b>S. Sai</b>, A. Bhargava, A. Sahu, W. Jiang, Z. Xiong, D. Niyato, A. Hussain</p>
+            <p class="pub__venue"><em>Cognitive Computation</em>, vol. 16, no. 6, pp. 3286 to 3315</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="genai">
+          <div class="pub__year">2024</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/ACCESS.2024.3385107">Generative AI for cyber security: analyzing the potential of ChatGPT, DALL-E and other models for enhancing the security space</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, U. Yashvardhan, V. Chamola, B. Sikdar</p>
+            <p class="pub__venue"><em>IEEE Access</em>, vol. 12, pp. 53497 to 53516</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="sensing">
+          <div class="pub__year">2022</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1016/j.neunet.2021.11.011">CSITime: privacy-preserving human activity recognition using WiFi channel state information</a></h3>
+            <p class="pub__authors">S. K. Yadav, <b>S. Sai</b>, A. Gundewar, H. Rathore, K. Tiwari, H. M. Pandey, M. Mathur</p>
+            <p class="pub__venue"><em>Neural Networks</em>, vol. 146, pp. 11 to 21</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="sensing genai">
+          <div class="pub__year">2025</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/TVT.2024.3491170">DMDAT: diffusion model-based data augmentation technique for vision-based accident detection in vehicular networks</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, U. Mittal, V. Chamola</p>
+            <p class="pub__venue"><em>IEEE Transactions on Vehicular Technology</em>, vol. 74, no. 2, pp. 2241 to 2250</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="sensing">
+          <div class="pub__year">2026</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/JIOT.2026.3657341">Machine learning techniques for Wi-Fi CSI-based recognition and sensing: a comprehensive review</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, D. Sharma, M. S. Peelam, V. Chamola, M. Guizani, D. Niyato</p>
+            <p class="pub__venue"><em>IEEE Internet of Things Journal</em>, vol. 13, no. 10, pp. 20190 to 20214</p>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="pub-empty" id="pubEmpty" hidden>No selected papers in that area yet. Try another filter.</p>
+
+      <div class="pub-more">
+        <span>Four further papers appear in workshop proceedings at EMNLP, EACL and AAAI.</span>
+        <a href="https://scholar.google.com/citations?user=et-EvAcAAAAJ&hl=en&view_op=list_works&sortby=pubdate">See the full list on Google Scholar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================== collaborators -- -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title">People I work with</h2>
+      </div>
+
+      <div class="people">
+        <div class="people__row">
+          <h3 class="people__name"><a href="http://www.buyya.com/">Prof. Rajkumar Buyya</a></h3>
+          <p class="people__where">University of Melbourne</p>
+          <p class="people__what">Distributed and quantum machine learning, quantum-integrated high-performance computing.</p>
+        </div>
+        <div class="people__row">
+          <h3 class="people__name">Prof. Biplab Sikdar</h3>
+          <p class="people__where">National University of Singapore</p>
+          <p class="people__what">Secure and scalable healthcare systems, consumer electronics for the metaverse.</p>
+        </div>
+        <div class="people__row">
+          <h3 class="people__name">Prof. Vinay Chamola</h3>
+          <p class="people__where">BITS Pilani, doctoral advisor</p>
+          <p class="people__what">Blockchain and AI for next-generation healthcare.</p>
+        </div>
+        <div class="people__row">
+          <h3 class="people__name">Prof. Amir Hussain</h3>
+          <p class="people__where">Edinburgh Napier University</p>
+          <p class="people__what">Generative AI, cognitive computation, machine unlearning.</p>
+        </div>
+        <div class="people__row">
+          <h3 class="people__name">Prof. Heena Rathore</h3>
+          <p class="people__where">Texas State University</p>
+          <p class="people__what">Distributed ledgers and anomaly detection for connected vehicles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ teaching and awards -- -->
+  <section class="section section--tint">
+    <div class="wrap two-col">
+      <div>
+        <h2 class="col-title">Teaching</h2>
+        <ul class="stack">
+          <li>
+            <strong>Deep Learning, teaching assistant</strong>
+            BITS Pilani, Aug to Dec 2021. Prepared and assessed assignments and projects
+            for a class of 80.
+          </li>
+          <li>
+            <strong>Database Systems, teaching assistant</strong>
+            BITS Pilani, Jan to May 2021. Ran lab components and doubt-clearing sessions
+            for a class of 200 sophomores.
+          </li>
+          <li>
+            <strong>Mentoring</strong>
+            I have led teams of junior students and international collaborators through
+            survey and systems papers in all five of my research areas, from first outline
+            to camera-ready.
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="col-title">Recognition</h2>
+        <ul class="stack">
+          <li>
+            <strong>Outstanding Research Article Award</strong>
+            EEE Department, BITS Pilani, for the blockchain-enabled split learning framework
+            published in IEEE Transactions on Consumer Electronics.
+          </li>
+          <li>
+            <strong>Merit Cum Need Scholarship</strong>
+            BITS Pilani, every semester of the undergraduate programme. Awarded to the top
+            3 percent of students.
+          </li>
+          <li>
+            <strong>HASOC-Dravidian-CodeMix 2020</strong>
+            First place in Task 1 and Task 2a, second in Task 2b, on multilingual offensive
+            speech detection in Manglish, Tanglish and code-mixed Malayalam.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= contact -- -->
+  <section id="contact" class="section">
+    <div class="wrap contact">
+      <div>
+        <h2 class="section-title">Contact</h2>
+        <p class="contact__lede" style="margin-top:0.9rem">
+          Email is the quickest way to reach me. I am always glad to hear about
+          collaborations in distributed machine learning, trustworthy AI, quantum
+          computing or health informatics.
+        </p>
+      </div>
+
+      <ul class="contact__list">
+        <li>
+          <span class="contact__key">Email</span>
+          <span>
+            <button type="button" class="reveal-mail" data-mail><span>Show email address</span></button>
+            <noscript><span class="contact__noscript">Enable JavaScript to see the address.</span></noscript>
+          </span>
+        </li>
+        <li><span class="contact__key">Scholar</span><a href="https://scholar.google.com/citations?user=et-EvAcAAAAJ&hl=en">Google Scholar profile</a></li>
+        <li><span class="contact__key">Based in</span><span>Department of Electrical and Computer Engineering, National University of Singapore</span></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <span>Siva Sai, National University of Singapore</span>
+    <span>Publication counts last checked September 2026</span>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
