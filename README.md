@@ -82,10 +82,19 @@ refresh them. Two ways round it:
   machine and push. Home and university connections are not blocked, so the
   direct path works there. Takes a few seconds.
 
-**The publications count stays manual.** The `59` is the curated figure from
-the CV, not Scholar's entry count, which includes preprints and duplicates.
-Scholar's robots.txt also disallows the paginated URLs needed to count entries
-properly, so it is not auto-refreshed. Edit it in `index.html` when it changes.
+**The publications count comes from Scholar too.** The script counts the
+entries on the profile and subtracts anything whose venue looks like a preprint
+(arXiv, bioRxiv, SSRN, TechRxiv and similar), which currently gives 61 minus 2,
+so 59. Adjust `PREPRINT_RE` in the script if a venue is being classified wrongly.
+
+One limit: it reads the profile with `pagesize=100` in a single request, because
+Scholar's robots.txt disallows the `cstart=` pagination parameter. Past 100
+entries the count would silently truncate, so the script refuses to write rather
+than publish a wrong number. If you pass 100 publications, switch the count to
+SerpAPI or set it by hand.
+
+SerpAPI returns the citation metrics but not a publication count, so on that
+route the last known count is carried forward unchanged.
 
 **Adding a publication.** Copy any `<article class="pub">` block in the
 publications section and edit it. The `data-area` attribute controls which

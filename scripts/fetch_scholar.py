@@ -22,10 +22,22 @@ import re
 import sys
 import urllib.error
 import urllib.request
-from datetime import date, timezone, datetime
+from datetime import date
+from html import unescape
 
 PROFILE_ID = "et-EvAcAAAAJ"
-URL = "https://scholar.google.com/citations?user={}&hl=en".format(PROFILE_ID)
+
+# The public profile, newest first, with every entry on one page. pagesize is
+# permitted; the cstart= pagination parameter is not (robots.txt disallows it),
+# which is why PAGE_LIMIT below is a hard ceiling rather than a page size.
+PROFILE_URL = ("https://scholar.google.com/citations"
+               "?hl=en&user={}&view_op=list_works&sortby=pubdate".format(PROFILE_ID))
+URL = PROFILE_URL + "&pagesize=100"
+PAGE_LIMIT = 100
+
+# Venues that mean "not a peer-reviewed publication yet". Entries matching
+# these are excluded from the publication count.
+PREPRINT_RE = re.compile(r"arxiv|biorxiv|medrxiv|ssrn|techrxiv|researchsquare|preprint", re.I)
 OUT = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
     "assets", "data", "scholar.json",
@@ -71,12 +83,37 @@ def parse(html):
             "expected 6 metric cells, found {} (page layout changed?)".format(len(values))
         )
 
-    # Column order: citations all/since, h-index all/since, i10 all/since.
-    return {
+    stats = {
+        # Column order: citations all/since, h-index all/since, i10 all/since.
         "citations": int(values[0]),
         "hIndex": int(values[2]),
         "i10Index": int(values[4]),
     }
+    stats["publications"] = count_publications(html)
+    return stats
+
+
+def count_publications(html):
+    """Entries on the profile, minus anything still only a preprint."""
+    rows = re.findall(r'<tr class="gsc_a_tr">.*?</tr>', html, re.S)
+    if not rows:
+        raise RefreshError("no publication rows found (page layout changed?)")
+    if len(rows) >= PAGE_LIMIT:
+        # Reading further needs cstart=, which robots.txt disallows, so the
+        # count would silently undercount. Refuse rather than publish it.
+        raise RefreshError(
+            "{} rows fills the page; counting the rest needs a disallowed URL".format(len(rows))
+        )
+
+    preprints = 0
+    for row in rows:
+        grays = re.findall(r'<div class="gs_gray">(.*?)</div>', row, re.S)
+        # Second gs_gray is the venue; the first is the author list.
+        venue = re.sub(r"<[^>]+>", "", grays[1]) if len(grays) > 1 else ""
+        if PREPRINT_RE.search(unescape(venue)):
+            preprints += 1
+
+    return len(rows) - preprints
 
 
 def fetch_via_serpapi(key):
@@ -131,15 +168,18 @@ def validate(new, prev):
         raise RefreshError("implausible citations: {}".format(new["citations"]))
     if new["hIndex"] > new["i10Index"]:
         raise RefreshError("h-index above i10-index, columns likely misread")
+    if "publications" in new and not (0 < new["publications"] < PAGE_LIMIT):
+        raise RefreshError("implausible publication count: {}".format(new["publications"]))
 
     if prev:
         # Scholar corrects downward occasionally, but never by a lot. A big
         # drop means we parsed the wrong thing.
-        for key in ("citations", "hIndex", "i10Index"):
-            old = prev.get(key)
-            if isinstance(old, int) and old > 0 and new[key] < old * 0.8:
+        for key in ("citations", "hIndex", "i10Index", "publications"):
+            old, fresh = prev.get(key), new.get(key)
+            if isinstance(old, int) and old > 0 and isinstance(fresh, int) \
+                    and fresh < old * 0.8:
                 raise RefreshError(
-                    "{} fell from {} to {}, refusing to overwrite".format(key, old, new[key])
+                    "{} fell from {} to {}, refusing to overwrite".format(key, old, fresh)
                 )
     return new
 
@@ -155,6 +195,10 @@ def main():
             print("source: scholar.google.com directly "
                   "(set SERPAPI_KEY if this is blocked)")
             raw = parse(fetch(URL))
+        # SerpAPI reports the citation metrics but not a publication count,
+        # so carry the last known one forward rather than dropping the field.
+        if "publications" not in raw and prev and isinstance(prev.get("publications"), int):
+            raw["publications"] = prev["publications"]
         stats = validate(raw, prev)
     except RefreshError as exc:
         print("scholar refresh skipped: {}".format(exc), file=sys.stderr)
@@ -164,9 +208,10 @@ def main():
         return 1
 
     stats["updated"] = date.today().isoformat()
-    stats["source"] = URL
+    stats["source"] = PROFILE_URL
 
-    if prev and all(prev.get(k) == stats[k] for k in ("citations", "hIndex", "i10Index")):
+    keys = [k for k in ("citations", "hIndex", "i10Index", "publications") if k in stats]
+    if prev and all(prev.get(k) == stats[k] for k in keys):
         print("no change ({} citations)".format(stats["citations"]))
         return 0
 
@@ -176,10 +221,8 @@ def main():
         fh.write("\n")
 
     if prev:
-        print("updated: citations {} -> {}, h-index {} -> {}, i10 {} -> {}".format(
-            prev.get("citations"), stats["citations"],
-            prev.get("hIndex"), stats["hIndex"],
-            prev.get("i10Index"), stats["i10Index"]))
+        print("updated: " + ", ".join(
+            "{} {} -> {}".format(k, prev.get(k), stats[k]) for k in keys))
     else:
         print("seeded: {}".format(stats))
     return 0
