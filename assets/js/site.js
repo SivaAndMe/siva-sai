@@ -38,6 +38,44 @@
       });
     });
 
+  /* ------------------------------------------------ scholar metrics ---- *
+   * The numbers in the markup are the fallback and are always correct as of
+   * the last successful refresh. This upgrades them from a cached JSON file
+   * that a scheduled job rewrites. Scholar itself is never contacted from
+   * the browser: it sends no CORS header, so that request cannot succeed.
+   * Any failure here leaves the served markup exactly as it is.            */
+
+  function paintStats(data) {
+    if (!data || typeof data !== "object") return;
+
+    Array.prototype.slice
+      .call(document.querySelectorAll("[data-stat]"))
+      .forEach(function (el) {
+        var value = data[el.getAttribute("data-stat")];
+        if (typeof value !== "number" || !isFinite(value) || value <= 0) return;
+        el.textContent = value.toLocaleString("en-US");
+      });
+
+    var stamp = document.querySelector("[data-stat-updated]");
+    if (stamp && typeof data.updated === "string") {
+      var parts = data.updated.split("-");
+      var when = new Date(Date.UTC(+parts[0], +parts[1] - 1, +parts[2]));
+      if (!isNaN(when.getTime())) {
+        stamp.textContent = when.toLocaleDateString("en-GB", {
+          month: "long", year: "numeric", timeZone: "UTC"
+        });
+        stamp.setAttribute("datetime", data.updated);
+      }
+    }
+  }
+
+  if (typeof fetch === "function") {
+    fetch("assets/data/scholar.json", { cache: "no-cache" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(paintStats)
+      .catch(function () { /* keep the numbers already in the markup */ });
+  }
+
   /* ------------------------------------------------ publication filter -- */
   var chips = Array.prototype.slice.call(
     document.querySelectorAll(".pub-toolbar .chip")

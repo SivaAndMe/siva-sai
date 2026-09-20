@@ -8,6 +8,9 @@ index.html               the whole page
 assets/css/styles.css    all styling, light and dark
 assets/js/site.js        email reveal, publication filter, active nav highlight
 assets/img/              portrait and NUS campus banner
+assets/data/scholar.json cached citation metrics, refreshed weekly
+scripts/fetch_scholar.py the refresher
+.github/workflows/       the schedule that runs it
 ```
 
 No CV, phone number or personal email address is published. The CV PDF is kept
@@ -38,10 +41,37 @@ relative.
 
 ## Keeping it current
 
-**Publication counts.** Four numbers live in the metrics band near the top of
-`index.html`: papers, citations, h-index and i10-index. They are hardcoded, so
-refresh them from Google Scholar every few months and update the
-"Publication counts last checked" line in the footer at the same time.
+**Citations, h-index and i10-index update themselves.** A GitHub Actions job
+runs every Monday, reads the Google Scholar profile, and writes
+`assets/data/scholar.json`. The page fetches that file on load and replaces the
+numbers, including the "updated" date in the footer.
+
+The numbers written into `index.html` are the fallback. If the JSON is missing,
+corrupt, or cannot be fetched, the page silently keeps whatever is in the
+markup, so it can never show a blank or a zero. Keep those hardcoded values
+roughly current as a safety net.
+
+Scholar cannot be read from the browser directly: it sends no
+`Access-Control-Allow-Origin` header, so a fetch from the page is blocked
+whatever you do. Going through a scheduled job is the only way to do this from
+a static site, and it is also gentler on Scholar, which rate-limits and
+CAPTCHAs anything that looks like scraping.
+
+The refresher is fail-closed. If Scholar returns a CAPTCHA, or the page layout
+changes, or the parsed numbers look implausible (h-index above i10-index, a
+sudden collapse in citations), it writes nothing and exits non-zero. The
+previous values stay. Run it by hand any time:
+
+```
+python scripts/fetch_scholar.py
+```
+
+or trigger the workflow from the Actions tab with "Run workflow".
+
+**The publications count stays manual.** The `59` is the curated figure from
+the CV, not Scholar's entry count, which includes preprints and duplicates.
+Scholar's robots.txt also disallows the paginated URLs needed to count entries
+properly, so it is not auto-refreshed. Edit it in `index.html` when it changes.
 
 **Adding a publication.** Copy any `<article class="pub">` block in the
 publications section and edit it. The `data-area` attribute controls which

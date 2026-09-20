@@ -1,0 +1,56 @@
+name: Refresh Scholar metrics
+
+# Google Scholar sends no CORS header, so the browser cannot read it directly.
+# Instead this job refreshes a cached JSON file that the page reads on load.
+# If the fetch is blocked or the numbers look wrong the script exits non-zero
+# without writing, so the previous values simply stay in place.
+
+on:
+  schedule:
+    # 04:15 UTC every Monday. Off the hour, since the top of the hour is when
+    # every other cron job on GitHub fires and runners get congested.
+    - cron: "15 4 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-scholar
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch metrics
+        id: fetch
+        continue-on-error: true
+        run: python scripts/fetch_scholar.py
+
+      - name: Report a blocked fetch
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          echo "### Scholar refresh skipped" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Scholar was unreachable or returned something unexpected." >> "$GITHUB_STEP_SUMMARY"
+          echo "The site keeps the previous values. Nothing is broken." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit if the numbers moved
+        if: steps.fetch.outcome == 'success'
+        run: |
+          if git diff --quiet -- assets/data/scholar.json; then
+            echo "No change to commit."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/data/scholar.json
+          git commit -m "Update Scholar metrics"
+          git push

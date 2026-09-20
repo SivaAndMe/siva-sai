@@ -10,3 +10,7 @@ desktop.ini
 
 # Local-only files, never published
 _local (not published)/
+
+# Python
+__pycache__/
+*.pyc
