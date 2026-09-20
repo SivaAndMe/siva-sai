@@ -499,6 +499,19 @@ a:hover { color: var(--accent-hover); }
 .aside-card li:first-child { border-top: 0; padding-top: 0; }
 .aside-card strong { color: var(--ink); font-weight: 500; }
 
+/* Each fact on its own line rather than running together as prose. */
+.aside-card li > strong,
+.aside-where,
+.aside-note {
+  display: block;
+}
+.aside-where { margin-top: 0.2rem; }
+.aside-note {
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 /* ---------------------------------------------------------- timeline --- */
 
 .timeline { display: grid; gap: 0; }
@@ -606,6 +619,16 @@ a:hover { color: var(--accent-hover); }
   color: var(--ink-2);
 }
 .pub__venue em { font-style: italic; color: var(--ink); }
+
+.pub__status {
+  display: inline-block;
+  margin: 0.45rem 0 0 0.4rem;
+  padding: 0.16rem 0.5rem;
+  border: 1px dashed var(--rule-strong);
+  border-radius: var(--radius);
+  color: var(--ink-2);
+  font-size: 0.8rem;
+}
 
 .pub__if {
   display: inline-block;
