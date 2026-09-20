@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """Refresh the cached Google Scholar citation metrics.
 
-Fetches the public profile page (robots.txt explicitly allows
-/citations?user=), pulls out the "All" column of the metrics table, and
-rewrites assets/data/scholar.json.
+Two ways in, tried in this order:
 
-The script is deliberately fail-closed: if the fetch is blocked, the page
-shape changes, or the parsed numbers look implausible, it leaves the existing
-JSON untouched and exits non-zero. Stale-but-real numbers beat wrong ones.
+1. SerpAPI, if SERPAPI_KEY is set. Google Scholar CAPTCHAs requests from
+   datacenter IP ranges, which is what every CI runner has, so this is the
+   only route that works reliably from GitHub Actions. Their free tier covers
+   a weekly run many times over.
+2. The public profile page directly (robots.txt explicitly allows
+   /citations?user=). This works from a home or office connection, so it is
+   the right path when running the script by hand, and costs nothing.
+
+Either way the script is fail-closed: if the fetch is blocked, the page shape
+changes, or the numbers look implausible, it leaves the existing JSON
+untouched and exits non-zero. Stale-but-real numbers beat wrong ones.
 """
 
 import json
@@ -73,6 +79,40 @@ def parse(html):
     }
 
 
+def fetch_via_serpapi(key):
+    """Read the same numbers through SerpAPI, which is not IP-blocked."""
+    url = ("https://serpapi.com/search.json?engine=google_scholar_author"
+           "&author_id={}&hl=en&api_key={}".format(PROFILE_ID, key))
+    req = urllib.request.Request(url, headers={"Accept": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=45) as resp:
+            payload = json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        raise RefreshError("SerpAPI HTTP {}".format(exc.code))
+    except Exception as exc:
+        raise RefreshError("SerpAPI request failed: {}".format(exc))
+
+    if payload.get("error"):
+        raise RefreshError("SerpAPI error: {}".format(payload["error"]))
+
+    rows = (payload.get("cited_by") or {}).get("table") or []
+    found = {}
+    # Rows look like [{"citations": {"all": N}}, {"h_index": {"all": N}}, ...].
+    # Scan by key rather than position, so a reordering does not misread them.
+    for row in rows:
+        for serp_key, our_key in (("citations", "citations"),
+                                  ("h_index", "hIndex"),
+                                  ("i10_index", "i10Index")):
+            cell = row.get(serp_key)
+            if isinstance(cell, dict) and isinstance(cell.get("all"), int):
+                found[our_key] = cell["all"]
+
+    missing = {"citations", "hIndex", "i10Index"} - set(found)
+    if missing:
+        raise RefreshError("SerpAPI response missing {}".format(", ".join(sorted(missing))))
+    return found
+
+
 def load_previous():
     try:
         with open(OUT, encoding="utf-8") as fh:
@@ -106,8 +146,16 @@ def validate(new, prev):
 
 def main():
     prev = load_previous()
+    key = os.environ.get("SERPAPI_KEY", "").strip()
     try:
-        stats = validate(parse(fetch(URL)), prev)
+        if key:
+            print("source: SerpAPI")
+            raw = fetch_via_serpapi(key)
+        else:
+            print("source: scholar.google.com directly "
+                  "(set SERPAPI_KEY if this is blocked)")
+            raw = parse(fetch(URL))
+        stats = validate(raw, prev)
     except RefreshError as exc:
         print("scholar refresh skipped: {}".format(exc), file=sys.stderr)
         if prev:

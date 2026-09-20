@@ -68,6 +68,20 @@ python scripts/fetch_scholar.py
 
 or trigger the workflow from the Actions tab with "Run workflow".
 
+**One catch worth knowing.** Google Scholar serves a CAPTCHA to requests from
+datacenter IP addresses, which is what every CI runner has. So the scheduled
+job, left alone, will usually skip and keep the previous numbers rather than
+refresh them. Two ways round it:
+
+- *Free, fully automatic:* sign up at serpapi.com, take the API key from your
+  dashboard, and add it to the repository under Settings, Secrets and
+  variables, Actions, as `SERPAPI_KEY`. The workflow picks it up with no code
+  change. The free tier is 100 searches a month and the schedule uses about
+  four.
+- *Free, occasional:* run `python scripts/fetch_scholar.py` on your own
+  machine and push. Home and university connections are not blocked, so the
+  direct path works there. Takes a few seconds.
+
 **The publications count stays manual.** The `59` is the curated figure from
 the CV, not Scholar's entry count, which includes preprints and duplicates.
 Scholar's robots.txt also disallows the paginated URLs needed to count entries

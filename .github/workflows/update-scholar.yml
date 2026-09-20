@@ -32,6 +32,11 @@ jobs:
       - name: Fetch metrics
         id: fetch
         continue-on-error: true
+        env:
+          # Optional. Without it the job falls back to reading Scholar
+          # directly, which Google CAPTCHAs from CI runner IPs, so the run
+          # will usually skip and keep the previous numbers.
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
         run: python scripts/fetch_scholar.py
 
       - name: Report a blocked fetch
