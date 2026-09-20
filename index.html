@@ -202,9 +202,17 @@
           deployments, blockchain-backed protocols for prescription management and
           connected-vehicle anomaly detection, and most recently APS-pQFL, a personalised
           quantum federated learning method for heterogeneous healthcare networks.
-          Alongside the systems work I map emerging areas into taxonomies and
-          architectural frameworks, which is largely how I decide which problems to take
-          on next. The work appears in IEEE Transactions on
+          The recurring technical problem is heterogeneity: clients that hold very
+          different data, run on very different hardware, and cannot be trusted to behave.
+          APS-pQFL answers it on the quantum side with soft masking and circuit-level
+          sensitivity analysis, personalising each client's circuit instead of forcing one
+          shared model, which holds 75 to 82 percent accuracy on highly skewed non-IID
+          medical data where the baselines fall five to ten points lower. On the classical
+          side I have built a client selection method that picks which hospitals to train
+          with rather than averaging over all of them, a feature selection algorithm for
+          incremental learning on IoMT streams, and CSITime, a Wi-Fi sensing model that
+          improved on the state of the art by 3.3 percent on ARIL. The work appears in IEEE
+          Transactions on
           Consumer Electronics, IEEE Transactions on Intelligent Transportation Systems,
           IEEE Internet of Things Journal, ACM Transactions on Internet Technology, Future
           Generation Computer Systems and Neural Networks, and has been cited roughly
@@ -271,11 +279,12 @@
         <article class="entry">
           <div class="entry__when">May 2023 to Jul 2024</div>
           <div>
-            <h3 class="entry__role">Research Collaboration, Generative AI for the Metaverse</h3>
+            <h3 class="entry__role">Research Collaboration, Generative AI for Immersive Systems</h3>
             <p class="entry__org">Edinburgh Napier University, with Prof. Amir Hussain</p>
             <p class="entry__detail">
-              Led an international team drafting and revising a comprehensive survey on
-              generative AI for immersive experience. Two journal papers.
+              Led an international team working on generative models for immersive and
+              metaverse systems: which architectures hold up under the latency and compute
+              budgets of real deployments, and how they fail. Two journal papers.
             </p>
           </div>
         </article>
@@ -328,8 +337,8 @@
       <div class="section-head">
         <h2 class="section-title">Selected publications</h2>
         <p class="section-note">
-          Eighteen papers that represent the range of the work. Filter by area, or see the
-          complete list on Google Scholar.
+          Eighteen papers that represent the range of the work, first-authored technical
+          contributions first. Filter by area, or see the complete list on Google Scholar.
         </p>
       </div>
 
@@ -344,12 +353,93 @@
 
       <div class="pubs" id="pubs">
 
+        <article class="pub" data-area="distributed blockchain">
+          <div class="pub__year">2024</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/TCE.2024.3418963">A blockchain-enabled split learning framework with a novel client selection method for collaborative learning in smart healthcare</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, V. Chamola</p>
+            <p class="pub__venue"><em>IEEE Transactions on Consumer Electronics</em>, vol. 70, no. 3, pp. 5887 to 5894. Outstanding Research Article Award, EEE Department, BITS Pilani</p>
+            <p class="pub__if">Impact factor 9.9</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="distributed">
+          <div class="pub__year">2026</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/TCE.2026.3698595">Split learning-enabled framework for secure and lightweight Internet of Medical Things systems</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, M. Prasad, A. Bhargava, V. Chamola, R. Buyya</p>
+            <p class="pub__venue"><em>IEEE Transactions on Consumer Electronics</em></p>
+            <p class="pub__if">Impact factor 9.9</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="distributed blockchain">
+          <div class="pub__year">2024</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/JIOT.2023.3308991">Federated learning and NFT-based privacy-preserving medical-data-sharing scheme for intelligent diagnosis in smart healthcare</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, V. Hassija, V. Chamola, M. Guizani</p>
+            <p class="pub__venue"><em>IEEE Internet of Things Journal</em>, vol. 11, no. 4, pp. 5568 to 5577</p>
+            <p class="pub__if">Impact factor 8.9</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="sensing genai">
+          <div class="pub__year">2025</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/TVT.2024.3491170">DMDAT: diffusion model-based data augmentation technique for vision-based accident detection in vehicular networks</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, U. Mittal, V. Chamola</p>
+            <p class="pub__venue"><em>IEEE Transactions on Vehicular Technology</em>, vol. 74, no. 2, pp. 2241 to 2250</p>
+            <p class="pub__if">Impact factor 7.5</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="blockchain">
+          <div class="pub__year">2024</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1145/3641279">AI-assisted blockchain-enabled smart and secure e-prescription management framework</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, V. Chamola</p>
+            <p class="pub__venue"><em>ACM Transactions on Internet Technology</em></p>
+            <p class="pub__if">Impact factor 5.1</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="distributed">
+          <div class="pub__year">2024</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/TMLCN.2024.3374253">An IoMT-based incremental learning framework with a novel feature selection algorithm for intelligent diagnosis in smart healthcare</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, K. S. Bhandari, A. Nawal, V. Chamola, B. Sikdar</p>
+            <p class="pub__venue"><em>IEEE Transactions on Machine Learning in Communications and Networking</em>, vol. 2, pp. 370 to 383</p>
+            <p class="pub__if">Impact factor 4.9</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="blockchain sensing">
+          <div class="pub__year">2023</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/TITS.2023.3262398">Social psychology inspired distributed ledger technique for anomaly detection in connected vehicles</a></h3>
+            <p class="pub__authors">H. Rathore, <b>S. Sai</b>, A. Gundewar</p>
+            <p class="pub__venue"><em>IEEE Transactions on Intelligent Transportation Systems</em>, vol. 24, no. 7, pp. 7092 to 7107</p>
+            <p class="pub__if">Impact factor 9.1</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="sensing">
+          <div class="pub__year">2022</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1016/j.neunet.2021.11.011">CSITime: privacy-preserving human activity recognition using WiFi channel state information</a></h3>
+            <p class="pub__authors">S. K. Yadav, <b>S. Sai</b>, A. Gundewar, H. Rathore, K. Tiwari, H. M. Pandey, M. Mathur</p>
+            <p class="pub__venue"><em>Neural Networks</em>, vol. 146, pp. 11 to 21</p>
+            <p class="pub__if">Impact factor 7.2</p>
+          </div>
+        </article>
+
         <article class="pub" data-area="quantum">
           <div class="pub__year">2026</div>
           <div>
             <h3 class="pub__title"><a href="https://doi.org/10.1016/j.future.2026.108602">Quantum artificial intelligence for mission-critical systems: foundations, architectural elements and future directions</a></h3>
             <p class="pub__authors"><b>S. Sai</b>, R. Buyya</p>
             <p class="pub__venue"><em>Future Generation Computer Systems</em>, vol. 184, art. 108602</p>
+            <p class="pub__if">Impact factor 6.1</p>
           </div>
         </article>
 
@@ -359,6 +449,17 @@
             <h3 class="pub__title"><a href="https://doi.org/10.1016/j.future.2026.108714">Generative AI in the age of quantum computing: a taxonomy, architectural elements and future directions</a></h3>
             <p class="pub__authors"><b>S. Sai</b>, I. Goyal, V. Chamola, R. Buyya</p>
             <p class="pub__venue"><em>Future Generation Computer Systems</em>, art. 108714</p>
+            <p class="pub__if">Impact factor 6.1</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="quantum">
+          <div class="pub__year">2026</div>
+          <div>
+            <h3 class="pub__title">Quantum machine learning for cybersecurity: a taxonomy and future directions</h3>
+            <p class="pub__authors"><b>S. Sai</b>, I. Goyal, S. Sharma, S. H. Manuri, V. Chamola, R. Buyya</p>
+            <p class="pub__venue"><em>Software: Practice and Experience</em></p>
+            <p class="pub__if">Impact factor 3.5</p>
           </div>
         </article>
 
@@ -371,75 +472,13 @@
           </div>
         </article>
 
-        <article class="pub" data-area="quantum">
-          <div class="pub__year">2026</div>
-          <div>
-            <h3 class="pub__title">Quantum machine learning for cybersecurity: a taxonomy and future directions</h3>
-            <p class="pub__authors"><b>S. Sai</b>, I. Goyal, S. Sharma, S. H. Manuri, V. Chamola, R. Buyya</p>
-            <p class="pub__venue"><em>Software: Practice and Experience</em></p>
-          </div>
-        </article>
-
-        <article class="pub" data-area="distributed blockchain">
-          <div class="pub__year">2024</div>
-          <div>
-            <h3 class="pub__title"><a href="https://doi.org/10.1109/TCE.2024.3418963">A blockchain-enabled split learning framework with a novel client selection method for collaborative learning in smart healthcare</a></h3>
-            <p class="pub__authors"><b>S. Sai</b>, V. Chamola</p>
-            <p class="pub__venue"><em>IEEE Transactions on Consumer Electronics</em>, vol. 70, no. 3, pp. 5887 to 5894. Outstanding Research Article Award, EEE Department, BITS Pilani</p>
-          </div>
-        </article>
-
-        <article class="pub" data-area="distributed">
-          <div class="pub__year">2026</div>
-          <div>
-            <h3 class="pub__title"><a href="https://doi.org/10.1109/TCE.2026.3698595">Split learning-enabled framework for secure and lightweight Internet of Medical Things systems</a></h3>
-            <p class="pub__authors"><b>S. Sai</b>, M. Prasad, A. Bhargava, V. Chamola, R. Buyya</p>
-            <p class="pub__venue"><em>IEEE Transactions on Consumer Electronics</em></p>
-          </div>
-        </article>
-
-        <article class="pub" data-area="distributed blockchain">
-          <div class="pub__year">2024</div>
-          <div>
-            <h3 class="pub__title"><a href="https://doi.org/10.1109/JIOT.2023.3308991">Federated learning and NFT-based privacy-preserving medical-data-sharing scheme for intelligent diagnosis in smart healthcare</a></h3>
-            <p class="pub__authors"><b>S. Sai</b>, V. Hassija, V. Chamola, M. Guizani</p>
-            <p class="pub__venue"><em>IEEE Internet of Things Journal</em>, vol. 11, no. 4, pp. 5568 to 5577</p>
-          </div>
-        </article>
-
-        <article class="pub" data-area="distributed">
-          <div class="pub__year">2024</div>
-          <div>
-            <h3 class="pub__title"><a href="https://doi.org/10.1109/TMLCN.2024.3374253">An IoMT-based incremental learning framework with a novel feature selection algorithm for intelligent diagnosis in smart healthcare</a></h3>
-            <p class="pub__authors"><b>S. Sai</b>, K. S. Bhandari, A. Nawal, V. Chamola, B. Sikdar</p>
-            <p class="pub__venue"><em>IEEE Transactions on Machine Learning in Communications and Networking</em>, vol. 2, pp. 370 to 383</p>
-          </div>
-        </article>
-
         <article class="pub" data-area="blockchain">
           <div class="pub__year">2023</div>
           <div>
             <h3 class="pub__title"><a href="https://doi.org/10.1109/JIOT.2022.3232793">Confluence of blockchain and artificial intelligence technologies for secure and scalable healthcare solutions: a review</a></h3>
             <p class="pub__authors"><b>S. Sai</b>, V. Chamola, K.-K. R. Choo, B. Sikdar, J. J. P. C. Rodrigues</p>
             <p class="pub__venue"><em>IEEE Internet of Things Journal</em>, vol. 10, no. 7, pp. 5873 to 5897</p>
-          </div>
-        </article>
-
-        <article class="pub" data-area="blockchain">
-          <div class="pub__year">2024</div>
-          <div>
-            <h3 class="pub__title"><a href="https://doi.org/10.1145/3641279">AI-assisted blockchain-enabled smart and secure e-prescription management framework</a></h3>
-            <p class="pub__authors"><b>S. Sai</b>, V. Chamola</p>
-            <p class="pub__venue"><em>ACM Transactions on Internet Technology</em></p>
-          </div>
-        </article>
-
-        <article class="pub" data-area="blockchain sensing">
-          <div class="pub__year">2023</div>
-          <div>
-            <h3 class="pub__title"><a href="https://doi.org/10.1109/TITS.2023.3262398">Social psychology inspired distributed ledger technique for anomaly detection in connected vehicles</a></h3>
-            <p class="pub__authors">H. Rathore, <b>S. Sai</b>, A. Gundewar</p>
-            <p class="pub__venue"><em>IEEE Transactions on Intelligent Transportation Systems</em>, vol. 24, no. 7, pp. 7092 to 7107</p>
+            <p class="pub__if">Impact factor 8.9</p>
           </div>
         </article>
 
@@ -449,51 +488,7 @@
             <h3 class="pub__title"><a href="https://doi.org/10.1007/s12559-023-10219-3">Machine unlearning: an overview of techniques, applications and future directions</a></h3>
             <p class="pub__authors"><b>S. Sai</b>, U. Mittal, V. Chamola, K. Huang, I. Spinelli, S. Scardapane, Z. Tan, A. Hussain</p>
             <p class="pub__venue"><em>Cognitive Computation</em>, vol. 16, no. 2, pp. 482 to 506</p>
-          </div>
-        </article>
-
-        <article class="pub" data-area="genai">
-          <div class="pub__year">2024</div>
-          <div>
-            <h3 class="pub__title"><a href="https://doi.org/10.1109/ACCESS.2024.3367715">Generative AI for transformative healthcare: a comprehensive study of emerging models, applications, case studies and limitations</a></h3>
-            <p class="pub__authors"><b>S. Sai</b>, A. Gaur, R. Sai, V. Chamola, M. Guizani, J. J. P. C. Rodrigues</p>
-            <p class="pub__venue"><em>IEEE Access</em>, vol. 12, pp. 31078 to 31106</p>
-          </div>
-        </article>
-
-        <article class="pub" data-area="genai">
-          <div class="pub__year">2024</div>
-          <div>
-            <h3 class="pub__title"><a href="https://doi.org/10.1007/s12559-024-10342-9">A comprehensive survey on generative AI for metaverse: enabling immersive experience</a></h3>
-            <p class="pub__authors">V. Chamola, <b>S. Sai</b>, A. Bhargava, A. Sahu, W. Jiang, Z. Xiong, D. Niyato, A. Hussain</p>
-            <p class="pub__venue"><em>Cognitive Computation</em>, vol. 16, no. 6, pp. 3286 to 3315</p>
-          </div>
-        </article>
-
-        <article class="pub" data-area="genai">
-          <div class="pub__year">2024</div>
-          <div>
-            <h3 class="pub__title"><a href="https://doi.org/10.1109/ACCESS.2024.3385107">Generative AI for cyber security: analyzing the potential of ChatGPT, DALL-E and other models for enhancing the security space</a></h3>
-            <p class="pub__authors"><b>S. Sai</b>, U. Yashvardhan, V. Chamola, B. Sikdar</p>
-            <p class="pub__venue"><em>IEEE Access</em>, vol. 12, pp. 53497 to 53516</p>
-          </div>
-        </article>
-
-        <article class="pub" data-area="sensing">
-          <div class="pub__year">2022</div>
-          <div>
-            <h3 class="pub__title"><a href="https://doi.org/10.1016/j.neunet.2021.11.011">CSITime: privacy-preserving human activity recognition using WiFi channel state information</a></h3>
-            <p class="pub__authors">S. K. Yadav, <b>S. Sai</b>, A. Gundewar, H. Rathore, K. Tiwari, H. M. Pandey, M. Mathur</p>
-            <p class="pub__venue"><em>Neural Networks</em>, vol. 146, pp. 11 to 21</p>
-          </div>
-        </article>
-
-        <article class="pub" data-area="sensing genai">
-          <div class="pub__year">2025</div>
-          <div>
-            <h3 class="pub__title"><a href="https://doi.org/10.1109/TVT.2024.3491170">DMDAT: diffusion model-based data augmentation technique for vision-based accident detection in vehicular networks</a></h3>
-            <p class="pub__authors"><b>S. Sai</b>, U. Mittal, V. Chamola</p>
-            <p class="pub__venue"><em>IEEE Transactions on Vehicular Technology</em>, vol. 74, no. 2, pp. 2241 to 2250</p>
+            <p class="pub__if">Impact factor 7.4</p>
           </div>
         </article>
 
@@ -503,6 +498,37 @@
             <h3 class="pub__title"><a href="https://doi.org/10.1109/JIOT.2026.3657341">Machine learning techniques for Wi-Fi CSI-based recognition and sensing: a comprehensive review</a></h3>
             <p class="pub__authors"><b>S. Sai</b>, D. Sharma, M. S. Peelam, V. Chamola, M. Guizani, D. Niyato</p>
             <p class="pub__venue"><em>IEEE Internet of Things Journal</em>, vol. 13, no. 10, pp. 20190 to 20214</p>
+            <p class="pub__if">Impact factor 8.9</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="genai">
+          <div class="pub__year">2024</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/ACCESS.2024.3367715">Generative AI for transformative healthcare: a comprehensive study of emerging models, applications, case studies and limitations</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, A. Gaur, R. Sai, V. Chamola, M. Guizani, J. J. P. C. Rodrigues</p>
+            <p class="pub__venue"><em>IEEE Access</em>, vol. 12, pp. 31078 to 31106</p>
+            <p class="pub__if">Impact factor 3.6</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="genai">
+          <div class="pub__year">2024</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1109/ACCESS.2024.3385107">Generative AI for cyber security: analyzing the potential of ChatGPT, DALL-E and other models for enhancing the security space</a></h3>
+            <p class="pub__authors"><b>S. Sai</b>, U. Yashvardhan, V. Chamola, B. Sikdar</p>
+            <p class="pub__venue"><em>IEEE Access</em>, vol. 12, pp. 53497 to 53516</p>
+            <p class="pub__if">Impact factor 3.6</p>
+          </div>
+        </article>
+
+        <article class="pub" data-area="genai">
+          <div class="pub__year">2024</div>
+          <div>
+            <h3 class="pub__title"><a href="https://doi.org/10.1007/s12559-024-10342-9">A comprehensive survey on generative AI for metaverse: enabling immersive experience</a></h3>
+            <p class="pub__authors">V. Chamola, <b>S. Sai</b>, A. Bhargava, A. Sahu, W. Jiang, Z. Xiong, D. Niyato, A. Hussain</p>
+            <p class="pub__venue"><em>Cognitive Computation</em>, vol. 16, no. 6, pp. 3286 to 3315</p>
+            <p class="pub__if">Impact factor 7.4</p>
           </div>
         </article>
 
@@ -633,7 +659,6 @@
 <footer class="footer">
   <div class="wrap footer__inner">
     <span>Siva Sai, National University of Singapore</span>
-    <span>Citation metrics updated <span data-stat-updated>September 2026</span></span>
   </div>
 </footer>
 

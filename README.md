@@ -42,7 +42,7 @@ relative.
 ## Keeping it current
 
 **Citations, h-index and i10-index update themselves.** A GitHub Actions job
-runs every Monday, reads the Google Scholar profile, and writes
+runs once a day, reads the Google Scholar profile, and writes
 `assets/data/scholar.json`. The page fetches that file on load and replaces the
 numbers, including the "updated" date in the footer.
 
@@ -76,8 +76,8 @@ refresh them. Two ways round it:
 - *Free, fully automatic:* sign up at serpapi.com, take the API key from your
   dashboard, and add it to the repository under Settings, Secrets and
   variables, Actions, as `SERPAPI_KEY`. The workflow picks it up with no code
-  change. The free tier is 100 searches a month and the schedule uses about
-  four.
+  change. The free tier is 100 searches a month and a daily schedule uses about
+  30.
 - *Free, occasional:* run `python scripts/fetch_scholar.py` on your own
   machine and push. Home and university connections are not blocked, so the
   direct path works there. Takes a few seconds.

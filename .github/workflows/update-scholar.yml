@@ -7,9 +7,10 @@ name: Refresh Scholar metrics
 
 on:
   schedule:
-    # 04:15 UTC every Monday. Off the hour, since the top of the hour is when
-    # every other cron job on GitHub fires and runners get congested.
-    - cron: "15 4 * * 1"
+    # 04:15 UTC daily, about 30 runs a month against SerpAPI's 100-call free
+    # tier. Off the hour, since the top of the hour is when every other cron
+    # job on GitHub fires and runners get congested.
+    - cron: "15 4 * * *"
   workflow_dispatch:
 
 permissions:

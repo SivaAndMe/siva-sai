@@ -607,6 +607,18 @@ a:hover { color: var(--accent-hover); }
 }
 .pub__venue em { font-style: italic; color: var(--ink); }
 
+.pub__if {
+  display: inline-block;
+  margin: 0.45rem 0 0;
+  padding: 0.16rem 0.5rem;
+  border: 1px solid var(--accent-line);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+}
+
 .pub-empty {
   padding: 2.5rem 0;
   color: var(--ink-2);
