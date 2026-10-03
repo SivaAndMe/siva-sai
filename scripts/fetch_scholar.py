@@ -118,8 +118,11 @@ def count_publications(html):
 
 def fetch_via_serpapi(key):
     """Read the same numbers through SerpAPI, which is not IP-blocked."""
+    # num=100 returns the article list in the same call (the default is only
+    # 20), so the publication count costs no extra search credit.
     url = ("https://serpapi.com/search.json?engine=google_scholar_author"
-           "&author_id={}&hl=en&api_key={}".format(PROFILE_ID, key))
+           "&author_id={}&hl=en&sort=pubdate&num={}&api_key={}".format(
+               PROFILE_ID, PAGE_LIMIT, key))
     req = urllib.request.Request(url, headers={"Accept": "application/json"})
     try:
         with urllib.request.urlopen(req, timeout=45) as resp:
@@ -147,6 +150,17 @@ def fetch_via_serpapi(key):
     missing = {"citations", "hIndex", "i10Index"} - set(found)
     if missing:
         raise RefreshError("SerpAPI response missing {}".format(", ".join(sorted(missing))))
+
+    articles = payload.get("articles")
+    if not isinstance(articles, list) or not articles:
+        raise RefreshError("SerpAPI response has no article list")
+    if len(articles) >= PAGE_LIMIT:
+        raise RefreshError(
+            "{} articles fills the page; the count would be truncated".format(len(articles))
+        )
+    preprints = sum(1 for a in articles
+                    if PREPRINT_RE.search(str(a.get("publication") or "")))
+    found["publications"] = len(articles) - preprints
     return found
 
 
@@ -195,10 +209,6 @@ def main():
             print("source: scholar.google.com directly "
                   "(set SERPAPI_KEY if this is blocked)")
             raw = parse(fetch(URL))
-        # SerpAPI reports the citation metrics but not a publication count,
-        # so carry the last known one forward rather than dropping the field.
-        if "publications" not in raw and prev and isinstance(prev.get("publications"), int):
-            raw["publications"] = prev["publications"]
         stats = validate(raw, prev)
     except RefreshError as exc:
         print("scholar refresh skipped: {}".format(exc), file=sys.stderr)
